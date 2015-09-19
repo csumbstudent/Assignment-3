@@ -6,6 +6,7 @@ public class Card {
     private char value;
     private Suit suit;
     boolean errorFlag;
+    public static char[] validCardValues = {'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K'};
     public Card(char value, Suit suit){
         this.set(value, suit);
     }
@@ -28,12 +29,10 @@ public class Card {
         }
     }
     private static boolean isValid(char value, Suit suit){
-        if((int)value >= 50 && (int)value <= 57)
-            return true;
-        else if(value == 'T' || value == 'J' || value == 'Q' || value == 'K' || value == 'A')
-            return true;
-        else
-            return false;
+        for(char validValue : Card.validCardValues)
+            if(validValue == value)
+                return true;
+        return false;
     }
     public char getValue(){
         return value;
