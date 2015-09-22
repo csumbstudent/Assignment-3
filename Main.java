@@ -22,12 +22,9 @@ public class Main {
         System.out.println("Testing class Hand...\n");
         cards[0].set('3', Card.Suit.diamonds);
         Hand hand = new Hand();
-        int cardToTake = 0;
-        while(hand.takeCard(cards[cardToTake])){
-            cardToTake++;
-            if(cardToTake > 2)
-                cardToTake = 0;
-        }
+       for(int cardToTake = 0; hand.takeCard(cards[cardToTake]); cardToTake++)
+          if(cardToTake == 2)
+            cardToTake = 0;
         System.out.println("Hand is full...");
         System.out.println("After deal");
         System.out.println("Hand = " + hand);
@@ -62,7 +59,7 @@ public class Main {
         deck.shuffle();
         while(!deck.inspectCard(deck.getTopCard()-1).errorFlag)
             System.out.print(deck.dealCard() + " / ");
-        System.out.println("-----------------------------------------------*\\\n");
+        System.out.println("\n-----------------------------------------------*\\\n");
         System.out.println("Feeding hands from a deck...");
         Scanner keyIn = new Scanner(System.in);
         int numPlayers = 0;
@@ -110,3 +107,4 @@ public class Main {
         System.out.println("\n/*-----------------------------------------------");
     }
 }
+
